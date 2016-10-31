@@ -41,10 +41,10 @@ def get_plot_data(path):
 
 def plot_data(path):
     data = get_plot_data(path)
-    ti = [t for t in list(data) if "time" in t.lower()][0]
+    ti = [t for t in list(data) if "time" in t.lower() or "ms" in t.lower()][0]
     plt.figure()
     for index, name in enumerate(list(data)):
-        if "ms" not in name.lower():
+        if "ms" not in name.lower() and "time" not in name.lower():
             plt.plot(data[ti], data[name])
             plt.title("Solar Data")
             plt.ylabel("%s" % name)
